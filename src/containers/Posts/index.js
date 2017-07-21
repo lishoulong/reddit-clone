@@ -3,15 +3,16 @@ import React, { Component } from 'react';
 class Posts extends Component {
   handleUpvote = (post, key) => {
     this.props.firebase.ref('posts/' + key).set({
-      title: post.title,
+      title: post.title || "up",
       upvote: post.upvote + 1,
       downvote: post.downvote
     });
   }
 
   handleDownvote = (post, key) => {
+    console.log(this);
     this.props.firebase.ref('posts/' + key).set({
-      title: post.title,
+      title: post.title || "down",
       upvote: post.upvote,
       downvote: post.downvote + 1
     });
